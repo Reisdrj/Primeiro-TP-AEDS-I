@@ -53,42 +53,51 @@ void main() {
         if(op == 3){
             printf("Insira o código do curso para saber o CR mais alto: \n");
             scanf("%d", &codigo);
-
-            for(int j = 0; j < 5; j++){
-                if(codigo == (dados[j][1])){
-                    if((dados[j][2]) == 2){
-                        if(j == 0){
-                            mcr = cr = dados[j][3];
-                            mcralto = dados[j][0];
-                        }
-                        else{
-                            if((dados[j][3]) >= mcr){
-                                mcr = dados[j][3];
+            if(i == 0){
+                printf("Nenhum CR informado!");
+            }
+            else{
+                for(int j = 0; j < 5; j++){
+                    if(codigo == (dados[j][1])){
+                        if((dados[j][2]) == 2){
+                            if(j == 0){
+                                mcr = cr = dados[j][3];
                                 mcralto = dados[j][0];
+                            }
+                            else{
+                                if((dados[j][3]) >= mcr){
+                                    mcr = dados[j][3];
+                                    mcralto = dados[j][0];
+                                }
                             }
                         }
                     }
                 }
             }
-
-            printf("O CR mais alto é %d e pertence a %d", mcr, mcralto);
+            if(i != 0)
+                printf("O CR mais alto é %d e pertence a %d", mcr, mcralto);
         }
         if(op == 4){
-            printf("Cursos Lisados: \n");
-            printf("\n%d\n", dados[0][1]); /*Imprime o primeiro código de curso*/
-            for(int i = 1; i < 5; i++){
-                int b = i - 1;
-                for(int c = b; c >= 0; c--){    
-                    if((dados[i][1]) == dados[c][1]){  /*Se houver um código igual ao que está sendo verificado, ele adiciona 1 na condição*/
-                        cond++;
-                    }    
-                }
-                if(cond == 0){         /*Se não houver nenhum código igual, a cond é zero e ele imprime o código do curso*/
-                    printf("%d\n", dados[i][1]);
-                }
-                cond = 0;
+            if(i == 0){
+                printf("Nenhum Curso Listado!");
             }
-            printf("\n");
+            else{
+                printf("Cursos Listados: \n");
+                printf("\n%d\n", dados[0][1]); /*Imprime o primeiro código de curso*/
+                for(int i = 1; i < 5; i++){
+                    int b = i - 1;
+                    for(int c = b; c >= 0; c--){    
+                        if((dados[i][1]) == dados[c][1]){  /*Se houver um código igual ao que está sendo verificado, ele adiciona 1 na condição*/
+                            cond++;
+                        }    
+                    }
+                    if(cond == 0){         /*Se não houver nenhum código igual, a cond é zero e ele imprime o código do curso*/
+                        printf("%d\n", dados[i][1]);
+                    }
+                    cond = 0;
+                }
+                printf("\n");
+            }
         }
         if(op == 5){
             break;
