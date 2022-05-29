@@ -10,18 +10,18 @@ void main() {
         scanf("%d", &op);
         if(op == 1){
             if(i == 0){
-                printf("Dados não inseridos, a matriz está vazia!\n");
+                printf("\nDados não inseridos, a matriz está vazia!\n");
             }
             else{
                 printf("\nMatricula--Curso--Sexo--CR\n");
                 for(int  j = 0; j < 5; j++){
                     for(int k = 0; k < 4; k++){
-                        if(k == 2){
+                        if(k == 2){     /*Para imprimir o sexo como M ou F*/
                             if((dados[j][2]) == 1){
-                                printf(" M ");
+                                printf("  M  ");
                             }
                             else if((dados[j][2]) == 2){
-                                printf(" F ");
+                                printf("  F  ");
                             }
                         }
                         else{
@@ -79,7 +79,7 @@ void main() {
         }
         if(op == 4){
             if(i == 0){
-                printf("Nenhum Curso Listado!");
+                printf("Nenhum Curso Listado !");
             }
             else{
                 printf("Cursos Listados: \n");
