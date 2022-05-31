@@ -2,7 +2,8 @@
 
 void main() {
     int i = 0, op = 0, cr = 0, mcr = 0, mcralto = 0, codigo = 0, cond = 0;
-    int dados[5][4] = {NULL};
+    char homem = 'M', mulher = 'F';
+    int dados[20][4] = {};
     while(1){
         printf("\n\n------Menu de opções------"); 
         printf("\n1 - Vizualizar dados \n2 - Preencher Matriz \n3 - Verificar CR mais alto \n4 - Ver cursos \n5 - Sair do programa\n\n");
@@ -13,19 +14,25 @@ void main() {
                 printf("\nDados não inseridos, a matriz está vazia!\n");
             }
             else{
-                printf("\nMatricula--Curso--Sexo--CR\n");
-                for(int  j = 0; j < 5; j++){
+                printf("\n Matrícula---Curso--Sexo---CR\n");
+                for(int  j = 0; j < 20; j++){
                     for(int k = 0; k < 4; k++){
-                        if(k == 2){     /*Para imprimir o sexo como M ou F*/
+                        if(k == 0){
+                            printf(" %9d ", dados[j][0]); /*Alinhamento do código da matrícula, caso tenha 9 dígitos ou menos*/
+                        }
+                        if(k == 1) {
+                            printf("   %4d", dados[j][1]);
+                        }
+                        else if(k == 2){     /*Para imprimir o sexo como M ou F*/
                             if((dados[j][2]) == 1){
-                                printf("  M  ");
+                                printf("  %3c  ", homem);
                             }
                             else if((dados[j][2]) == 2){
-                                printf("  F  ");
+                                printf("  %3c  ", mulher);
                             }
                         }
-                        else{
-                            printf(" %4d  ", dados[j][k]);
+                        else if(k == 3){
+                            printf("%4d", dados[j][3]); /*Alinhamento do código do curso, caso tenha 4 dígitos ou menos*/
                         }
                     }
                     printf("\n");
@@ -33,20 +40,26 @@ void main() {
             }
         }
         if(op == 2){
-            for(int j = 0; j < 5; j++){
+            for(int j = 0; j < 20; j++){
                 printf("---------------------------\n");
                 printf("Insira a matícula: \n");
                 scanf("%d", &dados[j][0]);
 
-                printf("Insira o código do curso: \n");
+                do{
+                printf("\nInsira o código do curso: \n");
                 scanf("%d", &dados[j][1]);
+                }while((dados[j][1] / 10000) >= 1);  /*Condição para o código ter no máximo 4 dígitos*/
 
-                printf("Insira o sexo: \n1 - Masculino \n2 - Feminino\n");
+                do{
+                printf("\nInsira o sexo: \n1 - Masculino \n2 - Feminino\n");
                 scanf("%d", &dados[j][2]);
+                }while((dados[j][2] > 2) || (dados[j][2] < 1)); 
 
-                printf("Insira o CR (Coeficinte de Rendimento): \n");
+                do{
+                printf("\nInsira o CR (Coeficinte de Rendimento) em %%: \n");
                 scanf("%d", &dados[j][3]);
                 printf("---------------------------");
+                }while((dados[j][3] > 100) || (dados[j][3] < 0)); /*CR inserido deve estar entre 0 e 100*/
             }
             i++;
         }
@@ -57,7 +70,7 @@ void main() {
                 printf("Nenhum CR informado!");
             }
             else{
-                for(int j = 0; j < 5; j++){
+                for(int j = 0; j < 20; j++){
                     if(codigo == (dados[j][1])){
                         if((dados[j][2]) == 2){
                             if(j == 0){
@@ -74,17 +87,19 @@ void main() {
                     }
                 }
             }
-            if(i != 0)
-                printf("O CR mais alto é %d e pertence a %d", mcr, mcralto);
+            if(i != 0){
+                printf("\nO CR mais alto é %d e pertence a %d", mcr, mcralto);
+            }
         }
         if(op == 4){
             if(i == 0){
-                printf("Nenhum Curso Listado !");
+                printf("\nNenhum Curso Listado !");
             }
             else{
-                printf("Cursos Listados: \n");
+                printf("\n---------------------");
+                printf("\nCursos Listados: \n");
                 printf("\n%d\n", dados[0][1]); /*Imprime o primeiro código de curso*/
-                for(int i = 1; i < 5; i++){
+                for(int i = 1; i < 20; i++){
                     int b = i - 1;
                     for(int c = b; c >= 0; c--){    
                         if((dados[i][1]) == dados[c][1]){  /*Se houver um código igual ao que está sendo verificado, ele adiciona 1 na condição*/
@@ -96,6 +111,7 @@ void main() {
                     }
                     cond = 0;
                 }
+                printf("---------------------");
                 printf("\n");
             }
         }
