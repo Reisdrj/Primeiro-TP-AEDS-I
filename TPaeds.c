@@ -58,8 +58,8 @@ void main() {
                 do{
                 printf("\nInsira o CR (Coeficinte de Rendimento) em %%: \n");
                 scanf("%d", &dados[j][3]);
-                printf("---------------------------");
                 }while((dados[j][3] > 100) || (dados[j][3] < 0)); /*CR inserido deve estar entre 0 e 100*/
+                printf("---------------------------");
             }
             i++;
         }
@@ -67,7 +67,7 @@ void main() {
             printf("Insira o código do curso para saber o CR mais alto: \n");
             scanf("%d", &codigo);
             if(i == 0){
-                printf("Nenhum CR informado!");
+                printf("\nNenhum CR informado!");
             }
             else{
                 for(int j = 0; j < 20; j++){
