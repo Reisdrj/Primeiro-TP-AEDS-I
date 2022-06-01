@@ -18,7 +18,7 @@ void main() {
                 for(int  j = 0; j < 20; j++){
                     for(int k = 0; k < 4; k++){
                         if(k == 0){
-                            printf(" %9d ", dados[j][0]); /*Alinhamento do código da matrícula, caso tenha 9 dígitos ou menos*/
+                            printf("  %9d ", dados[j][0]); /*Alinhamento do código da matrícula, caso tenha 9 dígitos ou menos*/
                         }
                         if(k == 1) {
                             printf("   %4d", dados[j][1]);
