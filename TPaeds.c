@@ -3,7 +3,7 @@
 void main() {
     int i = 0, op = 0, cr = 0, mcr = 0, mcralto = 0, codigo = 0, cond = 0;
     char homem = 'M', mulher = 'F';
-    int dados[20][4] = {};
+    int dados[20][4] = {NULL};
     while(1){
         printf("\n\n------Menu de opções------"); 
         printf("\n1 - Vizualizar dados \n2 - Preencher Matriz \n3 - Verificar CR mais alto \n4 - Ver cursos \n5 - Sair do programa\n\n");
